@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link href='/static/css/bootstrap.css' rel='stylesheet'>
+</head>
+<body>
+
+	{% for category,message in get_flashed_messages(with_categories=True) %}
+	<div class='{{category}}'>{{message}}</div>
+	{% endfor %}
+	<form class='signup-form col-sm-6 mx-auto mt-5' method='POST'>
+		{{form.hidden_tag()}}
+		<input type='email' name='email' class='form-control mb-2' placeholder="Email">
+		<input type='password' name='password' class='form-control' placeholder='Password'>
+		<hr>
+		<div class='row'>
+			<input type='submit' class='form-control col-sm-4 btn btn-primary btn-sm' value='send'>
+			<input type='reset' class='form-control col-sm-4 ml-auto btn btn-danger btn-sm' value='reset'>
+		</div>
+
+	</form>
+</body>
+</html>

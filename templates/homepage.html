@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pro Coders</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />   
+	<link href="/static/css/templatemo-style.css" rel="stylesheet" />
+	<style>
+		.tm-section{
+			margin-bottom: 3em;
+		}
+	</style>
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+<body> 
+
+	<div class="container">
+	<!-- Top box -->
+		{% from 'addons.html' import header %}
+		{{header()}}
+
+		<main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Welcome to Pro Coders</h2>
+				<p class="col-12 text-center">Here we teach you how to write simple and effective code that will
+				speed up you development process. Our Tutorials are structured to treat only fundamental concepts.
+				For further reading, links to other information sources are attached at the end of each tutorial</p>
+			</header>
+			
+
+
+			<!-- Gallery -->
+			<div class="tm-section tm-container-inner">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="tm-description-box"> 
+							<h4 class="tm-gallery-title">Learn basic and advance python3 programming</h4>
+							<p class="tm-mb-45">Learn how to create programs with python3 programming language.</p>
+							<a href="/posts?tag=python3" class="tm-btn tm-btn-default tm-right">Read More</a>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<figure class="tm-description-figure">
+							<img src="/static/img/about-06.jpg" alt="Image" class="img-fluid" />
+						</figure>
+					</div>
+				</div>	
+			</div>
+
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Our Style</h2>
+				<p class="col-12 text-center">Our principles resolve around making coding as ease and fun as possible. We therefore, follow the following guidlines
+				<ul>
+					<li> Create sections of code </li>
+					<li> Explain every code step by step </li>
+					<li> Show example usage of code </li>
+				</ul>
+				</p>
+			</header>
+			
+			<div class="tm-section tm-container-inner">
+				<div class="row">
+					<div class="col-md-6">
+						<figure class="tm-description-figure">
+							<img src="/static/img/img-01.png" alt="Image" class="img-fluid" />
+						</figure>
+					</div>
+					<div class="col-md-6">
+						<div class="tm-description-box"> 
+							<h4 class="tm-gallery-title">Learn Website development with Flask</h4>
+							<p class="tm-mb-45">Learn how to build simple and beautiful websites with pytho flask webframework. It is as easy as it looks</p>
+							<a href="/posts?tag=flask" class="tm-btn tm-btn-default tm-right">Read More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		{% from 'addons.html' import footer %}
+		{{footer()}}
+	</div>
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/parallax.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+				
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Edit</title>
+	<link href='/static/css/default.min.css' rel='stylesheet'>
+	<link href='/static/css/quill.snow.css' rel='stylesheet'>
+
+<style>
+  body > #standalone-container {
+    margin: 50px auto;
+    max-width: 720px;
+  }
+  #editor-container {
+    height: 350px;
+  }
+</style>
+
+
+</head>
+<body>
+
+{% for category,message in get_flashed_messages(with_categories=True) %}
+<div class='{{category}}'>{{message}}</div>
+{% endfor %}
+  
+<form method='POST' id='upload_form'>
+	{{form.hidden_tag()}}
+	<div>
+    <input type='text' name='title' required placeholder="Document Title" value="{{post.title}}">
+    <input type='text' name='tags' required placeholder="tag names" value='{{post.get_tags()}}'>
+    <input type='text' name='image_name' placeholder="Display Image" value="{{post.image_name}}">
+    <input type='text' name='description' placeholder="Description" value="{{post.description}}" required>
+  <div>
+<div id="standalone-container">
+  <div id="toolbar-container">
+    <span class="ql-formats">
+      <select class="ql-font"></select>
+      <select class="ql-size"></select>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-bold"></button>
+      <button class="ql-italic"></button>
+      <button class="ql-underline"></button>
+      <button class="ql-strike"></button>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-color"></select>
+      <select class="ql-background"></select>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-script" value="sub"></button>
+      <button class="ql-script" value="super"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-header" value="1"></button>
+      <button class="ql-header" value="2"></button>
+      <button class="ql-blockquote"></button>
+      <button class="ql-code-block"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-list" value="ordered"></button>
+      <button class="ql-list" value="bullet"></button>
+      <button class="ql-indent" value="-1"></button>
+      <button class="ql-indent" value="+1"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-direction" value="rtl"></button>
+      <select class="ql-align"></select>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-link"></button>
+      <button class="ql-image"></button>
+      <button class="ql-video"></button>
+      <button class="ql-formula"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-clean"></button>
+    </span>
+  </div>
+  <div id="editor-container"></div>
+</div>
+<input id='textarea' name='textarea' type='hidden'>
+</form>
+
+<button onclick='upload()'>Save Changes</button>
+
+<script src='/static/js/highlight.js'></script>
+<script src='/static/js/katex.min.js'></script>
+<script src='/static/js/quill.min.js'></script>
+<script>
+  var quill = new Quill('#editor-container', {
+    modules: {
+      formula: true,
+      syntax: true,
+      toolbar: '#toolbar-container'
+    },
+    placeholder: 'Compose an epic...',
+    theme: 'snow'
+  });
+  
+  function upload(){
+    var textarea = document.querySelector('#textarea')
+    var a = quill.container.firstChild.innerHTML
+    if(!(a == '<p><br></p>')){
+      textarea.value = a
+      document.querySelector('#upload_form').submit();
+    } 
+  }
+
+  window.onload = function(){
+
+  quill.container.firstChild.innerHTML = `{{post.content | safe}}`;
+  
+
+  }
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% macro header() %}
+<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="/static/img/simple-house-01.jpg">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="/static/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" /> 
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Pro Coders</h1>
+								<h6 class="tm-site-description">Easy is speedy</h6>	
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="/" class="tm-nav-link">Home</a></li>
+								<li class="tm-nav-li"><a href="/posts" class="tm-nav-link">Tutorials</a></li>
+								<li class="tm-nav-li"><a href="/contact" class="tm-nav-link">Contact</a></li>
+							</ul>
+						</nav>	
+					</div>
+				</div>
+			</div>
+		</div>
+{% endmacro %}
+
+{% macro footer() %}
+<footer class="tm-footer text-center">
+			<p>Copyright &copy; 2020 Pro Coders</p>
+		</footer>
+{% endmacro %}
